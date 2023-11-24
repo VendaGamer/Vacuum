@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AddObstacle : MonoBehaviour
 {
     Camera cam;
     [SerializeField]
-    GameObject obstacle;
+    Rigidbody obstacle;
     void Start()
     {
-        
+        cam = this.GetComponent<Camera>();
     }
 
     void Update()
