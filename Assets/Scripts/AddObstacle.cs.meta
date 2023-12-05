@@ -3,7 +3,9 @@ guid: dbdabeab460c7a84eaa70aa62ec2a9b7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - obstacle: {fileID: 4565577877333650573, guid: efffaf5e87f0e3346a5effd29611f045, type: 3}
+  - transparent_obst: {fileID: 6944865049053705469, guid: f1ae80ecec7601b4cb7cb94f18e46b1c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

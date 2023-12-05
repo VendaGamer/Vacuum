@@ -11,6 +11,8 @@ public class AddObstacle : MonoBehaviour
     private Rigidbody obstacle;
     [SerializeField]
     private GameObject transparent_obst;
+    [SerializeField]
+    private int minDistance;
     private Vector3 old;
     private List<Rigidbody> obstacles = new List<Rigidbody>();
     void Start()
@@ -24,8 +26,8 @@ public class AddObstacle : MonoBehaviour
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out RaycastHit hit, 100)&& hit.point.x<=16.2&& hit.point.x >= -16.2
-            && hit.point.z <= 10 && hit.point.z >= -10 && obstacles.Count!=0) {
-            if (Colliding(hit.point, 4))
+            && hit.point.z <= 10 && hit.point.z >= -10) {
+            if (Colliding(hit.point, minDistance))
             {
                 if (old != hit.point && hit.collider.gameObject.tag != "Obstacle")
                 {

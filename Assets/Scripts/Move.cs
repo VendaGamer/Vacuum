@@ -28,7 +28,11 @@ public class Move : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.tag == "Item")
+        {
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.tag == "Obstacle")
         {
             if (direction == Vector3.forward)
             {
@@ -46,6 +50,10 @@ public class Move : MonoBehaviour
             {
                 StartCoroutine(WaitForReturn(Vector3.forward));
             }
+        }
+        else if(collision.gameObject.tag =="Border")
+        {
+            Destroy(gameObject);
         }
     }
 }
