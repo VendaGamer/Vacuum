@@ -5,31 +5,36 @@ using UnityEngine.SceneManagement;
 public class Scenator : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI levelLabel;
-    private int current = 1;
+    private TextMeshProUGUI levelLabel=null;
 
     private void Start()
     {
-        levelLabel.text = "Level: "+current;
+        if (levelLabel == null)
+        {
+            return;
+        }
+        levelLabel.text = "Level: "+Levels.Instance.Current;
     }
     public void LoadNext()
     {
-        if (current == 5)
+        if (Levels.Instance.Current == 5)
         {
-            SceneManager.LoadScene(2 + current);
+            SceneManager.LoadScene(2 + Levels.Instance.Current);
             return;
         }
-        if(current ==1) { 
         SceneManager.LoadScene(2);
-        }
-        current++;
-        SceneManager.LoadScene(2+current, LoadSceneMode.Additive);
-        levelLabel.text = "Level: " + current;
+        Levels.Instance.Add();
+        SceneManager.LoadScene(2+ Levels.Instance.Current, LoadSceneMode.Additive);
+    }
+    public void LoadFirst()
+    {
+        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2 + Levels.Instance.Current, LoadSceneMode.Additive);
     }
     public void Restart()
     {
         SceneManager.LoadScene(2);
-        SceneManager.LoadScene(3 + current, LoadSceneMode.Additive);
+        SceneManager.LoadScene(3 + Levels.Instance.Current, LoadSceneMode.Additive);
     }
     public void MainMenu()
     {
