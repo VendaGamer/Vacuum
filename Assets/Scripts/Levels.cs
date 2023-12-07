@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Levels
 {
@@ -13,6 +14,13 @@ public class Levels
     {
         current++;
     }
-
+    public void DeathScreen()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void Restart()
+    {
+        current = 1;
+    }
 
 }

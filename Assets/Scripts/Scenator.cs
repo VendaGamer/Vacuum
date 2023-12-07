@@ -17,9 +17,9 @@ public class Scenator : MonoBehaviour
     }
     public void LoadNext()
     {
-        if (Levels.Instance.Current == 5)
+        if (Levels.Instance.Current == 6)
         {
-            SceneManager.LoadScene(2 + Levels.Instance.Current);
+            SceneManager.LoadScene(8);
             return;
         }
         SceneManager.LoadScene(2);
@@ -34,10 +34,11 @@ public class Scenator : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(2);
-        SceneManager.LoadScene(3 + Levels.Instance.Current, LoadSceneMode.Additive);
+        SceneManager.LoadScene(2 + Levels.Instance.Current, LoadSceneMode.Additive);
     }
     public void MainMenu()
     {
+        Levels.Instance.Restart();
         SceneManager.LoadScene(0);
     }
     public void StartGame()

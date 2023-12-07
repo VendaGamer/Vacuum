@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AddObstacle : MonoBehaviour
-{
+{ 
     private Camera cam;
     [SerializeField]
     private Rigidbody obstacle;

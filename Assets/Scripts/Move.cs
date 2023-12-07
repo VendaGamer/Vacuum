@@ -2,6 +2,8 @@ using System.Collections;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Move : MonoBehaviour
 {
@@ -18,6 +20,11 @@ public class Move : MonoBehaviour
     void Update()
     {
         Movement();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+            Levels.Instance.Restart();
+        }
     }
     private void Movement()
     {
@@ -27,9 +34,9 @@ public class Move : MonoBehaviour
     {
         direction = -direction;
         Speed --;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         Speed++;
-        transform.Rotate(Vector3.right);
+        transform.Rotate(new Vector3(0,90,0));
         direction = temp;
     }
     private void OnCollisionEnter(Collision collision)
@@ -61,7 +68,7 @@ public class Move : MonoBehaviour
         }
         else if(collision.gameObject.tag =="Border")
         {
-            Destroy(gameObject);
+            Levels.Instance.DeathScreen();
         }
         else if( collision.gameObject.tag == "End")
         {
